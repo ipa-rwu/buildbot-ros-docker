@@ -1,0 +1,14 @@
+From ros:kinetic-ros-core-xenial
+RUN apt-get update && apt-get install -y \
+   	ros-kinetic-ros-base \
+	git \
+	ros-kinetic-rosdoc-lite \
+	apt-utils \
+	doxygen \
+	python-epydoc \
+	python-sphinx \
+	graphviz
+ADD ./scripts/docbuild.py /root/docbuild.py
+RUN apt-get -y update
+RUN apt-get -y upgrade
+ADD ./shell/c_p_doc.sh /tmp/publish_doc.sh

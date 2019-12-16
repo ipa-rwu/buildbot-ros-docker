@@ -1,0 +1,10 @@
+{
+	"auths": {
+		"registry.msb.scalable.atm.virtualfortknox.de": {
+			"auth": "cnVpY2hhby53dUBhdG0uc3ZjLmZvcnRrbm94LmxvY2FsOlFVODN1V0pPMGJhajVNQVdrTE5T"
+		}
+	},
+	"HttpHeaders": {
+		"User-Agent": "Docker-Client/19.03.3 (linux)"
+	}
+}
