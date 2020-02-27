@@ -10,7 +10,6 @@ from buildbot.steps.transfer import FileDownload
 
 from buildbot_ros_cfg.helpers import success
 from buildbot_ros_cfg.git_pr_poller import GitPRPoller
-import os
 
 ## @brief Testbuild jobs are used for CI testing of the source repo.
 ## @param c The Buildmasterconfig
@@ -27,10 +26,6 @@ def ros_testbuild(c, job_name, url, branch, distro, arch, rosdistro, machines,
                   othermirror, keys, source=True, locks=[]):
 
     # Create a Job for Source
-    hour_m=os.environ.get("DEVEL_TIME_H", '4')
-    minute_m=os.environ.get("DEVEL_TIME_M", '0')
-    hour_d=os.environ.get("DEVEL_TIME_H_D", '5'),
-    minute_d=os.environ.get("DEVEL_TIME_M_D", '0')
     
     if source:
         project_name = '_'.join([job_name, rosdistro, 'source_build'])
@@ -56,8 +51,8 @@ def ros_testbuild(c, job_name, url, branch, distro, arch, rosdistro, machines,
                 name = project_name+'-nightly-master',
                 codebases = {url:{'repository':url,'branch':'master'}},
                 builderNames = [project_name,],
-                hour=hour_m,
-                minute=minute_m
+                hour=3,
+                minute=0,
             )
         )
         
@@ -66,8 +61,8 @@ def ros_testbuild(c, job_name, url, branch, distro, arch, rosdistro, machines,
                 name = project_name+'-nightly-develop',
                 codebases = {url:{'repository':url,'branch':'develop'}},
                 builderNames = [project_name,],
-                hour=hour_d,
-                minute=minute_d
+                hour=5,
+                minute=0,
             )
         )
         
@@ -84,7 +79,6 @@ def ros_testbuild(c, job_name, url, branch, distro, arch, rosdistro, machines,
                 builderNames=[project_name,],
             )
         )
-
     else:
         r_owner, r_name = (url.split(':')[1])[:-4].split('/')
         project_name = '_'.join([job_name, rosdistro, 'pr_build'])

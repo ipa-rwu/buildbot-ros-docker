@@ -1,6 +1,0 @@
-From registry.msb.scalable.atm.virtualfortknox.de/buildbot_scalable/buildbot-sys:base
-ARG LOCAL_URL
-RUN sh -c 'echo "deb http://$LOCAL_URL/ xenial main" >> /etc/apt/sources.list'
-COPY ./scalable_ws /tmp/scalable_ws
-RUN apt-get update
-

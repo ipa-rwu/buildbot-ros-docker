@@ -250,17 +250,15 @@ def testbuilders_from_rosdistro(c, oracle, distro, builders, locks):
                 for code_name in build_file.get_target_os_code_names(os):
                     for arch in build_file.get_target_arches(os, code_name):
                         jobs_sources.append(ros_testbuild(c,
-                                                  name,    # job name
-                                                  source.repositories[name].url,    # URL of the SOURCE repository.
+                                                  name,
+                                                  source.repositories[name].url,
                                                   source.repositories[name].version,  # branch
-                                                  code_name,    # Ubuntu distro to build for (for instance, 'precise')
-                                                  arch,     # Architecture to build for (for instance, 'amd64')
-                                                  distro,   # ROS distro (for instance, 'kinetic')
-                                                  builders,     # List of machines this can build on
+                                                  code_name,
+                                                  arch,
+                                                  distro,
+                                                  builders,
                                                   oracle.getOtherMirror('source', distro, code_name),
-                                                  oracle.getKeys('source', distro),
-                                                  True,
-                                                  locks))
+                                                  oracle.getKeys('source', distro), True, locks))
 
                         jobs_pr.append(ros_testbuild(c,
                                                     name,

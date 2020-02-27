@@ -1,7 +1,7 @@
 version: '3'
 volumes:
   deb_repository:
-  deb_docs:
+  local_mirrors:
 services:
   scalable-repository:
     container_name: local-repository
@@ -18,8 +18,7 @@ services:
       - "49161:80"
     volumes:
       - deb_repository:/home/package
-      - deb_docs:/var/www/building/
-     # - local_docs:/var/www/building/docs
+      - local_mirrors:/var/www/building/ubuntu
 #    command: 
 #      - /bin/bash
 #      - -c

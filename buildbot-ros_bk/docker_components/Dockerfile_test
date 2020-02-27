@@ -1,5 +1,0 @@
-From registry.msb.scalable.atm.virtualfortknox.de/buildbot_scalable/buildbot-test:base
-# add local repository
-ARG LOCAL_URL
-RUN sh -c 'echo "deb http://$LOCAL_URL/ xenial main" >> /etc/apt/sources.list'
-RUN apt-get update

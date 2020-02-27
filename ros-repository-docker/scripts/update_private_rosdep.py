@@ -1,13 +1,12 @@
 import yaml, re
 import sys
 
-# rosdep_path /home/package/rosdep_private.yaml
+# rosdep_path /home/package/rosdep_pricate.yaml
 # rospack: ros-kinetic-*
-# ros_pack: ros_kinetic_*
-def update_rosdep(rosdep_path, ros_pack, rospack):
+def update_rosdep(rosdep_path, rospack):
     i = 0
-    patten = "ros_kinetic_"
-    pack = re.split(patten, ros_pack)[1]
+    patten = "ros-kinetic-"
+    pack = re.split(patten, rospack)[1]
     print(pack)
     with open(rosdep_path) as f:
         doc = yaml.safe_load(f)
@@ -25,12 +24,12 @@ def update_rosdep(rosdep_path, ros_pack, rospack):
                     yaml.safe_dump(data, outfile)
 
 if __name__=="__main__":
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         print('')
         print('Usage: unique_docker_deb.py <composefile> <package>')
         print('')
         exit(-1)
     rosdep_path = sys.argv[1]
-    ros_pack = sys.argv[2]
-    rospack = sys.argv[3]
-    update_rosdep(rosdep_path, ros_pack, rospack)
+    rospack = sys.argv[2]
+    update_rosdep(rosdep_path, rospack)
+

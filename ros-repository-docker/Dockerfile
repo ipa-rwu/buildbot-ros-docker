@@ -33,7 +33,6 @@ ENV SIGNING_PASSWORD=${KEY}
 ADD scripts/reprepro-import.sh /usr/local/sbin/reprepro-import
 RUN chmod 755 /usr/local/sbin/reprepro-import
 RUN mkdir -p /var/www/building/ubuntu/conf
-RUN mkdir -p /var/www/building/docs/
 ADD configs/reprepro-distributions /var/www/building/ubuntu/conf/distributions
 ADD configs/debian-upload.sh /tmp/debian-upload.sh 
 ADD configs/reprepro.exp /usr/local/bin/reprepro.exp
@@ -50,8 +49,6 @@ RUN echo "root:docker" | chpasswd
 RUN passwd -d root 
 
 # add rospdep to /home/package to share
-RUN apt-get -y update
-RUN apt-get -y upgrade
 RUN apt-get install -y python-pip
 RUN pip install --upgrade pip  
 RUN pip install pyyaml 

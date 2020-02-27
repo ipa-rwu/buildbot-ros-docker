@@ -73,11 +73,11 @@ docker build -f docker/Dockerfile_bb_master -t buildbot-ros:latest .
 docker build -f docker/Dockerfile_bb_worker -t buildbot-worker:latest .
 
 # add arg
-source $PWD/docker/env.sh
+source $PWD/buildbot-ros/docker/env.sh
+source $PWD/ros-repository-docker/env.sh
 # create local repository image
 docker-compose -f ros-repository-docker/docker-compose.yaml build
-docker-compose -f docker/docker-compose.yaml up
 docker-compose -f ros-repository-docker/docker-compose.yaml up
 
 #start master worker db
-#
+docker-compose -f docker/docker-compose.yaml up

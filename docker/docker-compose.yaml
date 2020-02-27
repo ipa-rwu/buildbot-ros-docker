@@ -75,3 +75,20 @@ services:
        - /var/run/docker.sock:/var/run/docker.sock
     links:
       - buildbot
+
+  scalable-repository:
+    container_name: local-repository
+    build:
+      args:
+        - YourOrganizationName=${YourOrganizationName}
+        - SIGNKEY=${GPG_SIGNKEY}
+        - KEY=${GPG_PATHWORD}
+      context: .
+      dockerfile: Dockerfile
+    image: ros-repository:latest
+    ports:
+      - "49160:22"
+      - "49161:80"
+    volumes:
+      - deb_repository:/home/package
+      - deb_docs:/var/www/building/

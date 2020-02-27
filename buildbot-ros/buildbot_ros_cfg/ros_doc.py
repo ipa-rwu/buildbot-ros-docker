@@ -104,16 +104,16 @@ def ros_docbuild(c, job_name, url, branch, rosdistro, machines, trigger_pkgs = N
         )
     )
 
-    # create and publish doc in docker
+    # creating doc in docker
     f.addStep(
         ShellCommand(
             # haltOnFailure=True,
-            name=job_name + '-create_publish_doc',
+            name=job_name + '-create_doc',
             command=['docker', 'run',
-                     '-v', 'ros-buildbot-docker_deb_docs:/var/www/building/docs',
+                    # '-v', 'ros-repository-docker_deb_repository:/home/package',
                      '--name', Interpolate('doc_'+job_name),
                      Interpolate('scalable-doc:' + job_name),
-                     'bash', '/tmp/publish_doc.sh', rosdistro],
+                     'python', '/root/docbuild.py', '/tmp/', rosdistro],
             descriptionDone=['create doc', job_name]
         )
     )

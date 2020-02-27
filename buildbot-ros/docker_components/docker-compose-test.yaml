@@ -5,8 +5,8 @@ services:
   scalable-test:
     build:
       args:
-        LOCAL_RESPOSITORY: 172.17.0.1:49161/ubuntu
-        SINGING_KEY: 8617EB404586F58E
+        LOCAL_RESPOSITORY: 172.17.0.1:49161
+        SINGING_KEY: 
       context: .
       dockerfile: Dockerfile_unique
     volumes:

@@ -10,9 +10,9 @@ rosdep update
 rosdep db
 missing=`dpkg-checkbuilddeps 2>&1 | sed 's/dpkg-checkbuilddeps:\serror:\sUnmet build dependencies: //g' | sed 's/[\(][^)]*[\)] //g'`
 echo "missing : $missing"
-sh -c 'echo "deb http://172.17.0.1:49161/ubuntu xenial main" >> /etc/apt/sources.list'
+sh -c 'echo "deb http://172.17.0.1:49161 xenial main" >> /etc/apt/sources.list'
 #url=http://local-repository:80/dists/
-url=http://172.17.0.1:49161/ubuntu/dists/
+url=http://172.17.0.1:49161/dists/
 if curl --output /dev/null --silent --head --fail "$url"; then
   printf '%s\n' "$url exist"
   	apt-get -y update

@@ -2,7 +2,7 @@ From registry.msb.scalable.atm.virtualfortknox.de/buildbot_scalable/buildbot-deb
 # local repository
 ARG SINGING_KEY
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $SINGING_KEY
-#ARG LOCAL_RESPOSITORY
-#RUN sh -c 'echo "deb http://$LOCAL_RESPOSITORY/ xenial main" >> /etc/apt/sources.list'
+#ARG LOCAL_URL
+#RUN sh -c 'echo "deb http://$LOCAL_URL/ xenial main" >> /etc/apt/sources.list'
 COPY ./build /tmp/
 RUN apt-get update
