@@ -1,0 +1,5 @@
+python-iso8601-pip:
+  ubuntu:
+    pip:
+      packages: [iso8601]
+
