@@ -1,5 +1,5 @@
 # buildbot-worker
-FROM        ubuntu:16.04
+FROM        ubuntu:18.04
 MAINTAINER  Ruichao WU
 ENV TZ=Europe/Berlin
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -8,8 +8,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # If using a private distro, need to setup keys for github
 RUN mkdir -p /root/.ssh
-#ADD ./docker/ssh_worker/id_rsa_worker.pub /root/.ssh/id_rsa_worker.pub
-#RUN chmod 600 /root/.ssh/id_rsa_worker.pub
 # Install security updates and required packages
 RUN apt-get update && \
     apt-get -y upgrade && \
