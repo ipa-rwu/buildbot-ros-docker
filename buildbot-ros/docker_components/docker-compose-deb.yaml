@@ -3,7 +3,7 @@ services:
     build:
       args:
         LOCAL_RESPOSITORY: 172.17.0.1:49161
-        SINGING_KEY: 8617EB404586F58E
+        SINGING_KEY: 
       context: .
       dockerfile: Dockerfile_deb
     image: scalable-deb:latest
